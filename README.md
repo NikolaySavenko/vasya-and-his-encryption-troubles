@@ -1,2 +1,4 @@
 # vasya-and-his-encryption-troubles
-ETU laba
+
+# How to setup env
+1. Just try run
