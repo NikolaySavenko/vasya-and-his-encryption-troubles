@@ -1,12 +1,6 @@
-import argparse
 import telebot
 import os
 
-"""
-parser = argparse.ArgumentParser(description='Can it help to hide secrets?')
-parser.add_argument("--token", required=True, type=str, help="Bot token")
-args = parser.parse_args()
-"""
 
 bot = telebot.TeleBot(os.environ.get('API_KEY_TELEGRAM'))
 
