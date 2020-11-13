@@ -1,3 +1,4 @@
+import requests
 import time
 import telebot
 import os
@@ -26,9 +27,11 @@ print("Polling")
 def rolling(sleep_time: int):
 	while True:
 		print("Rolling!")
+		session = requests.Session()
+		session.get("https://vasya-and-his-encryption-troubles.vercel.app/")
 		time.sleep(sleep_time)
 
 
 # don't beat me pls
-roll_thread = threading.Thread(target=rolling, args=(3,), daemon=False)
+roll_thread = threading.Thread(target=rolling, args=(9,), daemon=False)
 roll_thread.start()
