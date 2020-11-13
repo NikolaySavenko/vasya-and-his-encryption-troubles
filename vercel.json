@@ -1,9 +1,11 @@
 {
     "version": 2,
     "builds": [
-        { "src": "setup.py", "use": "@now/python" }
+        { "src": "setup.py", "use": "@now/python" },
+        { "src": "raise.py", "use": "@now/python" }
     ],
     "routes": [
-        { "src": "/(.*)", "dest": "setup.py" }
+        { "src": "/(.*)", "dest": "setup.py" },
+        { "src": "/(.*)", "dest": "raise.py" }
     ]
 }
