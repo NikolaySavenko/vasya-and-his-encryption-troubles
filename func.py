@@ -19,6 +19,8 @@ def convert_base(num, to_base=10, from_base=10):
         return convert_base(n // to_base, to_base) + alphabet[n % to_base]
 def alohomora(mass):
     for i in range(len(mass)):
+        if mass[i] < 0:
+            mass[i] = mass[i] * (-1)
         if mass[i] % 2 == 0:
             mass[i] = convert_base(mass[i], to_base=4)
         elif mass[i] % 3 == 0:
