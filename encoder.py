@@ -7,8 +7,8 @@ def encode(word: str) -> str:
 	:return: encoded key
 	"""
 	print(f"encoding from {word}")
-	text_ch = code(word)  # в шифр Цезаря
-	chisl = txt_to_num(text_ch)  # 10СС
+	text_ch = code(word)  #to_simple_Caesar_cipher
+	chisl = txt_to_num(text_ch)  #10СС
 	cod = alohomora(chisl)
 
 	if len(cod) % 2 == 1:

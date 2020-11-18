@@ -1,4 +1,4 @@
-def Text2(text): #каждый символ в двоичный код
+def Text2(text): #To_Unicode_Transformation_Format
     text_2 = [bin(c)[2:].rjust(8, '0') for c in text.encode('utf-8')]
     return ''.join(text_2)
 
@@ -28,10 +28,8 @@ def alohomora(mass):
         else:
             mass[i] = convert_base(mass[i], to_base=5)
     return mass
-def code(text): #что-то типа шифра Цезаря
-    #import random
+def code(text): #simple_Caesar_cipher
     ALPHA = u'абвгдеёжзийклмнопрстуфхцчшщьъэюя'
-    #step = random.randint(2, 15)
     if len(text) > 4:
         step = len(text)//4
     else:
