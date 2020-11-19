@@ -1,5 +1,6 @@
 from encoder import encode, decode
 from answers import challenge_desc
+from func import check_alpha
 
 correct_bot_name = 'VasyaAndHisEncryptionTroublesBot'
 solved_state = "solved"
@@ -17,6 +18,8 @@ def get_key_via_message(text: str):
 def get_challenge_text(text: str):
 	try:
 		word = get_key_via_message(text)
+		if not check_alpha(word):
+			raise Exception("Incorrect alpha")
 		challenge = challenge_desc.replace("$CODE$", encode(word))
 		challenge = challenge.replace("$STATE$", non_solved_state)
 		return challenge

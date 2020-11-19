@@ -39,3 +39,10 @@ def code(text): #simple_Caesar_cipher
 def decode(text, step):
     return text.translate(
         str.maketrans(ALPHA[step:] + ALPHA[:step], ALPHA))
+def check_alpha(text):
+    text = text.lower()
+    alpha = ["а","б","в","г","д","е","ё","ж","з","и","й","к","л","м","н","о", "п","р","с","т","у","ф","х","ц","ч","ш","щ","ъ","ы","ь","э","ю","я"]
+    for one_char in text:
+        if one_char not in alpha:
+            return False
+    return True
