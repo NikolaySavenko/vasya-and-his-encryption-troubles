@@ -1,4 +1,4 @@
-from func import txt_to_num, convert_base, alohomora, code
+from encoder.func import txt_to_num, convert_base, alohomora, code
 
 
 def encode(word: str) -> str:

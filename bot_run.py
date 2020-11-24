@@ -1,6 +1,6 @@
 import telebot
 import os
-from answers import answer_correct, answer_incorrect
+from misc.answers import answer_incorrect, answer_correct, answer_start
 from helper import get_challenge_text, get_solved_challenge_text, is_correct_answer
 
 bot = telebot.TeleBot(os.environ.get('API_KEY_TELEGRAM'))
@@ -11,7 +11,7 @@ default_parse_mode = "Markdown"
 def welcome(message):
 	print("/start detected")
 	print("[------------------------------]")
-	bot.send_message(message.chat.id, "Hello, use /new_game %code% to create challenge")
+	bot.send_message(message.chat.id, answer_start)
 
 
 @bot.message_handler(commands=['new_game'])
