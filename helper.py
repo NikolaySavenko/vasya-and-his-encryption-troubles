@@ -3,34 +3,43 @@ from answers import challenge_desc
 from func import check_alpha
 
 correct_bot_name = 'VasyaAndHisEncryptionTroublesBot'
-solved_state = "solved"
-non_solved_state = "non-solved"
-challenge_keyword = "Challenge"
+solved_state = "🥳решено🥳"
+non_solved_state = "🤜не решено🤛"
+challenge_keyword = "☠️Испытание"
+code_keyword = "🧠Шифр:"
+
+code_word_not_defined = "Кодовое слово не обнаружно"
+len_exception = "Слово должно состоять как минимум из 3х символов"
+incorrect_alphabet = "Пожалуйста используйте только кириллицу"
+solved_exception = "Уже решено"
 
 
 def get_key_via_message(text: str):
 	words = text.split()
 	if len(words) == 2:
 		return words[1]
-	raise Exception("no no no")
+	raise ValueError(code_word_not_defined)
 
 
 def get_challenge_text(text: str):
 	try:
 		word = get_key_via_message(text)
+		if len(word) < 3:
+			raise ValueError(len_exception)
 		if not check_alpha(word):
-			raise Exception("Incorrect alpha")
+			raise ValueError(incorrect_alphabet)
 		challenge = challenge_desc.replace("$CODE$", encode(word))
 		challenge = challenge.replace("$STATE$", non_solved_state)
 		return challenge
-	except:
-		return "Please write keyword after space with command"
+	except ValueError as value_error:
+		# return exception from get_key_via_message() to high level
+		raise value_error
 
 
-def get_change_challenge_answer_text(challenge_text: str):
-	if challenge_text.find(non_solved_state):
+def get_solved_challenge_text(challenge_text: str):
+	if challenge_text.find(non_solved_state) >= 0:
 		return challenge_text.replace(non_solved_state, solved_state, 1)
-	return challenge_text
+	raise Exception(solved_exception)
 
 
 def is_challenge_from_bot_text(text):
@@ -39,12 +48,7 @@ def is_challenge_from_bot_text(text):
 
 
 def is_correct_answer(answer: str, reply_message):
-	return encode(answer) == reply_message.text.split()[4]
-
-
-# deprecated
-def get_secret_via_message(reply_message):
-	if reply_message.from_user.username == correct_bot_name and \
-			is_challenge_from_bot_text(reply_message.text):
-		return decode(reply_message.text.split()[4])
-	raise Exception("not correct reply")
+	words = reply_message.text.split()
+	encoded_answer = encode(answer)
+	print(f"Checking correct answer: {encoded_answer} equals? {words[words.index(code_keyword) + 1]}")
+	return encoded_answer == words[words.index(code_keyword) + 1]

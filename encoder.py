@@ -6,7 +6,6 @@ def encode(word: str) -> str:
 	:param word: just a word which should be encoded to key
 	:return: encoded key
 	"""
-	print(f"encoding from {word}")
 	text_ch = code(word)  #to_simple_Caesar_cipher
 	chisl = txt_to_num(text_ch)  #10СС
 	cod = alohomora(chisl)
@@ -22,7 +21,9 @@ def encode(word: str) -> str:
 		cod_2[i] = abs(int(cod[i], 10) - int(cod[N - 1 - i]))
 	for i in range(len(cod_2)):
 		cod_2[i] = cod_2[i] = convert_base(cod_2[i], to_base=6, from_base=16)
-	return "".join(cod_2)
+	encoded = "".join(cod_2)
+	print(f"Encoded: {word} -> {encoded}")
+	return encoded
 
 
 # deprecated

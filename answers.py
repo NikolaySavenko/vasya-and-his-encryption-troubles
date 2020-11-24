@@ -1,8 +1,8 @@
 challenge_desc = '''
-Challenge created
-Your code: ```$CODE$```
-State: $STATE$
-Please reply your answer
+☠️Испытание создано
+🧠Шифр: ```$CODE$```
+☝️Состояние: $STATE$
+🗣Ответьте на сообщение исходным словом
 '''
-answer_correct = "Correct!"
-answer_incorrect = "Incorrect!"
+answer_correct = "Верно!"
+answer_incorrect = "Неверно!"
