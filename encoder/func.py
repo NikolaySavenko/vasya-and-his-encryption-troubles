@@ -1,4 +1,4 @@
-def Text2(text):  # To_Unicode_Transformation_Format
+def text2utf(text):  # To_Unicode_Transformation_Format
 	text_2 = [bin(c)[2:].rjust(8, '0') for c in text.encode('utf-8')]
 	return ''.join(text_2)
 
@@ -44,11 +44,6 @@ def code(text):  # simple_Caesar_cipher
 		step = l * 4 // 2
 	return text.translate(
 		str.maketrans(ALPHA, ALPHA[step:] + ALPHA[:step]))
-
-
-def decode(text, step):
-	return text.translate(
-		str.maketrans(ALPHA[step:] + ALPHA[:step], ALPHA))
 
 
 def check_alpha(text):
